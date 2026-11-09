@@ -1,0 +1,9 @@
+pandas
+numpy
+scipy
+matplotlib
+statsmodels
+pythermalcomfort>=3
+earthengine-api
+nbconvert
+ipykernel

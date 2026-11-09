@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus UTCI Outlook · IIT Madras</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"
+    media="print" onload="this.media='all'">
+  <style>
+    :root {
+      --maroon: #7A1E2B;
+      --maroon-d: #5E1520;
+      --gold: #B8892B;
+      --ink: #1F2328;
+      --text: #3A3F47;
+      --mute: #6E737B;
+      --line: #E7E3DD;
+      --bg: #F7F6F3;
+      --card: #FFFFFF;
+      --tint: #FAF6F0;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    [hidden] {
+      display: none !important
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.5 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-feature-settings: "tnum" 1
+    }
+
+    a {
+      color: var(--maroon)
+    }
+
+    .top {
+      background: var(--card);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .top::before {
+      content: "";
+      display: block;
+      height: 4px;
+      background: var(--maroon)
+    }
+
+    .bar {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0
+    }
+
+    .brand img {
+      height: 52px;
+      width: auto;
+      max-width: 220px;
+      object-fit: contain
+    }
+
+    .mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: .04em;
+      flex: none
+    }
+
+    .brand .t {
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.2
+    }
+
+    .brand .s {
+      color: var(--mute);
+      font-size: 12.5px
+    }
+
+    .act {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .status {
+      font-size: 12.5px;
+      color: var(--mute);
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #B9BDC3;
+      flex: none
+    }
+
+    .dot.ok {
+      background: #4C8C64
+    }
+
+    .dot.run {
+      background: var(--gold);
+      animation: pulse 1.2s infinite
+    }
+
+    .dot.bad {
+      background: #B23A2E
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: .35
+      }
+    }
+
+    .btn {
+      font: inherit;
+      font-weight: 500;
+      font-size: 13px;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--maroon);
+      background: var(--maroon);
+      color: #fff
+    }
+
+    .btn:hover {
+      background: var(--maroon-d)
+    }
+
+    .btn[aria-disabled=true] {
+      background: #fff;
+      color: var(--mute);
+      border-color: var(--line);
+      cursor: not-allowed
+    }
+
+    .chip-demo {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--maroon);
+      border: 1px solid var(--maroon);
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-left: 10px;
+      vertical-align: 2px
+    }
+
+    button.btn {
+      font-family: inherit
+    }
+
+    .btn[disabled] {
+      background: #fff;
+      color: var(--mute);
+      border-color: var(--line);
+      cursor: default
+    }
+
+    .btn.ghost {
+      background: #fff;
+      color: var(--ink);
+      border-color: var(--line)
+    }
+
+    .btn.ghost:hover {
+      border-color: var(--maroon);
+      color: var(--maroon)
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 22px 20px 40px
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 18px
+    }
+
+    .kpi {
+      background: var(--card);
+      padding: 14px 16px
+    }
+
+    .kpi small {
+      display: block;
+      color: var(--mute);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .kpi b {
+      display: block;
+      font-weight: 600;
+      color: var(--ink);
+      font-size: 17px;
+      margin-top: 3px
+    }
+
+    .kpi span {
+      color: var(--mute);
+      font-size: 12px
+    }
+
+    .head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 6px 0 10px
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: .06em
+    }
+
+    .ctl {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap
+    }
+
+    .ctl label {
+      font-size: 12px;
+      color: var(--mute);
+      margin-right: 2px
+    }
+
+    .ctl input,
+    .ctl button {
+      font: inherit;
+      font-size: 13px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: var(--ink);
+      cursor: pointer
+    }
+
+    .ctl button:hover,
+    .ctl input:hover {
+      border-color: var(--maroon)
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 18px
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      position: relative
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 14px;
+      bottom: 14px;
+      width: 3px;
+      background: var(--c);
+      border-radius: 0 2px 2px 0
+    }
+
+    .card .z {
+      font-size: 12.5px;
+      color: var(--mute);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .card .v {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.15;
+      margin: 4px 0 6px
+    }
+
+    .card .v span {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--mute);
+      margin-left: 2px
+    }
+
+    .chip {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 500;
+      border-radius: 4px;
+      padding: 2px 7px
+    }
+
+    .card .r {
+      font-size: 12px;
+      color: var(--mute);
+      margin-top: 8px
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 18px
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap
+    }
+
+    .tabs button {
+      font: inherit;
+      font-size: 12.5px;
+      border: 1px solid transparent;
+      background: none;
+      border-radius: 6px;
+      padding: 5px 10px;
+      cursor: pointer;
+      color: var(--mute)
+    }
+
+    .tabs button:hover {
+      color: var(--ink)
+    }
+
+    .tabs button.on {
+      border-color: var(--line);
+      background: var(--tint);
+      color: var(--maroon);
+      font-weight: 500
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block
+    }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--mute);
+      margin-top: 8px
+    }
+
+    .legend i {
+      display: inline-block;
+      width: 12px;
+      height: 3px;
+      border-radius: 2px;
+      margin-right: 6px;
+      vertical-align: 3px
+    }
+
+    .tw {
+      overflow-x: auto
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 13px;
+      min-width: 680px
+    }
+
+    th,
+    td {
+      padding: 9px 10px;
+      text-align: right;
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left
+    }
+
+    th {
+      font-weight: 500;
+      color: var(--mute);
+      font-size: 12px
+    }
+
+    tr:last-child td {
+      border-bottom: 0
+    }
+
+    td small {
+      display: block;
+      color: var(--mute);
+      font-size: 11px
+    }
+
+    .today {
+      background: var(--tint)
+    }
+
+    .sw {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      margin-right: 8px;
+      vertical-align: 0
+    }
+
+    footer {
+      display: none
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px 32px;
+      color: var(--mute);
+      font-size: 12px;
+      line-height: 1.6
+    }
+
+    footer p {
+      margin: 4px 0
+    }
+
+    #tip {
+      position: fixed;
+      pointer-events: none;
+      background: var(--ink);
+      color: #fff;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 6px;
+      opacity: 0;
+      transition: opacity .1s;
+      z-index: 9;
+      line-height: 1.5
+    }
+
+    @media(max-width:900px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .kpis {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:520px) {
+      .card .v {
+        font-size: 24px
+      }
+
+      .act {
+        margin-left: 0;
+        width: 100%
+      }
+
+      .bar,
+      main,
+      footer {
+        padding-left: 16px;
+        padding-right: 16px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="bar">
+      <div class="brand"><span id="logo"></span>
+        <div>
+          <div class="t">Campus UTCI Outlook</div>
+          <div class="s">IIT Madras · thermal comfort at the 10:30 AM satellite overpass</div>
+        </div>
+      </div>
+      <div class="act">
+        <div class="status" id="status"><span class="dot"></span><span>Refresh status unavailable</span></div><button
+          class="btn ghost" id="reset" hidden title="Start the replay again from the beginning">Reset demo</button><a
+          class="btn" id="rerun" target="_blank" rel="noopener">Re-run forecast</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="kpis" id="kpis"></section>
+
+    <div class="head">
+      <h2 id="cardsTitle">Today</h2>
+      <div class="ctl"><label for="pick">Show day</label><button id="prev" title="Previous day">‹</button><input
+          type="date" id="pick"><button id="next" title="Next day">›</button><button id="tod">First day</button></div>
+    </div>
+    <section class="cards" id="cards"></section>
+
+    <section class="panel">
+      <div class="head" style="margin-top:0">
+        <h2>Seven-day outlook (°C)</h2>
+        <div class="tabs" id="tabs"></div>
+      </div>
+      <svg id="chart" viewBox="0 0 960 320" role="img" aria-label="Seven-day UTCI forecast chart"></svg>
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <section class="panel">
+      <div class="head" style="margin-top:0">
+        <h2>Forecast table</h2><span class="status" id="pi"></span>
+      </div>
+      <div class="tw">
+        <table id="tbl"></table>
+      </div>
+    </section>
+  </main>
+  <footer id="foot"></footer>
+  <div id="tip"></div>
+
+  <script>
+    /*DATA_START*/
+    const DATA = {};
+    /*DATA_END*/
+    // Display-only label swap (the model and its files keep the original names)
+    const LABEL_SWAP = { "Academic Zone": "Staff Quarters", "Staff Quarters": "Academic Zone" };
+    Object.values(DATA.zones || {}).forEach(z => { z.name = LABEL_SWAP[z.name] || z.name });
+    const CATS = [[46, "Extreme heat stress", "#6B0F1A"], [38, "Very strong heat stress", "#A23B2A"], [32, "Strong heat stress", "#C8692E"], [26, "Moderate heat stress", "#B8892B"], [9, "No thermal stress", "#4C8C64"], [-Infinity, "Cold stress", "#4F6D8A"]];
+    const COL = { AC: "#7A1E2B", HZ: "#B8892B", LW: "#4F6D8A", NV: "#4C8C64", SQ: "#3A3F47" };
+    const $ = id => document.getElementById(id), DAY = 864e5, N = 7, Z = Object.keys(DATA.zones || {});
+    const cat = v => CATS.find(c => v >= c[0]);
+    const utc = s => { const [y, m, d] = s.split("-").map(Number); return Date.UTC(y, m - 1, d) };
+    const iso = ms => new Date(ms).toISOString().slice(0, 10);
+    const fmt = (s, o) => new Date(utc(s)).toLocaleDateString("en-IN", { ...o, timeZone: "UTC" });
+    const dShort = { weekday: "short", day: "numeric", month: "short" }, dLong = { day: "numeric", month: "short", year: "numeric" };
+    const now = new Date(), REAL_TODAY = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    const ago = t => { const m = Math.round((Date.now() - new Date(t)) / 6e4); return m < 60 ? `${m} min ago` : m < 2880 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} days ago` };
+    const RT = DATA.runtime || "static", SERVER = RT === "demo" || RT === "live", DEMO = RT === "demo";
+    const TODAY = DEMO ? iso(utc(DATA.last_obs) + DAY) : REAL_TODAY;
+    const MIN = iso(utc(DATA.last_obs || TODAY) + DAY);
+    const start = TODAY < MIN ? MIN : TODAY;   // the view is fixed to one week from this day
+    let selDay = 0, sel = "all", D = [], M = {};
+
+    // climatology + trend + Kalman AR(1) anomaly decaying from the last scene (same formula as the notebook)
+    function model(z, ms) {
+      const o = DATA.zones[z], c = o.coef, t = (ms - utc(DATA.t0)) / DAY / 365.25;
+      const doy = (ms - Date.UTC(new Date(ms).getUTCFullYear(), 0, 0)) / DAY, w = 2 * Math.PI * doy / 365.25;
+      const b = c.intercept + c.trend * t + c.sin1 * Math.sin(w) + c.cos1 * Math.cos(w) + c.sin2 * Math.sin(2 * w) + c.cos2 * Math.cos(2 * w);
+      const phi = Math.max(o.phi, 0), k = Math.max((ms - utc(o.last_obs)) / DAY / DATA.step, 0);
+      const m = b + o.anom * Math.pow(phi, k), sd = Math.sqrt(o.sigma2 * (1 - Math.pow(phi, 2 * k)) / (1 - phi * phi));
+      return [m, m - DATA.z * sd, m + DATA.z * sd];
+    }
+    function build() {
+      D = [...Array(N)].map((_, i) => iso(utc(start) + i * DAY)); M = {};
+      Z.forEach(z => { const r = D.map(d => model(z, utc(d))); M[z] = { mean: r.map(x => x[0]), lo: r.map(x => x[1]), hi: r.map(x => x[2]) } });
+    }
+
+    function header() {
+      $("logo").innerHTML = DATA.logo ? `<img src="${DATA.logo}" alt="IIT Madras">` : `<span class="mark">IITM</span>`;
+      const btn = $("rerun");
+      if (DEMO) document.querySelector(".brand .t").insertAdjacentHTML("beforeend", '<span class="chip-demo">Demo replay</span>');
+      if (SERVER) { serverControls(btn) }
+      else if (DATA.repo) {
+        btn.href = `https://github.com/${DATA.repo}/actions/workflows/${DATA.workflow}`;
+        btn.title = "Opens GitHub Actions. Choose 'Run workflow'; the page updates in about 3 minutes.";
+        pollStatus();
+      } else {
+        btn.setAttribute("aria-disabled", "true"); btn.removeAttribute("href");
+        btn.title = "Re-run is available when the dashboard is served by serve.py or published through the GitHub workflow (see README).";
+        $("status").innerHTML = `<span class="dot"></span><span>Static copy · generated ${ago(DATA.generated)}</span>`;
+      }
+      const a = DATA.accuracy, l = DATA.live || {}, next = DATA.next_scene;
+      $("kpis").innerHTML = [
+        ["Data through", fmt(DATA.last_obs, dLong), "latest usable Landsat scene"],
+        ["Next scene", next ? fmt(next, dLong) : "–", "expected overpass slot"],
+        ["Replay accuracy", a ? `${a.rmse.toFixed(2)} °C RMSE` : "–", a ? `MAE ${a.mae.toFixed(2)} °C · ${Math.round((a.coverage || 0) * 100)}% inside 90% band` : ""],
+        ["Live check", l.n ? `${l.rmse.toFixed(2)} °C RMSE` : "Pending", l.n ? `${l.targets} scene${l.targets > 1 ? "s" : ""} scored · ${Math.round((l.inside || 0) * 100)}% inside band` : "scored when the next scene arrives"],
+      ].map(([k, v, s]) => `<div class="kpi"><small>${k}</small><b>${v}</b><span>${s}</span></div>`).join("");
+    }
+
+    function serverControls(btn) {
+      const el = $("status"), reset = $("reset"), label = st => DEMO ? (st.pending > 0 ? `Replay next scene (${st.pending} left)` : "No more scenes to replay") : "Re-run forecast";
+      const swap = document.createElement("button"); swap.className = "btn"; swap.id = "rerun"; btn.replaceWith(swap);
+      if (DEMO) reset.hidden = false;
+      let busy = false;
+      async function refresh() {
+        try {
+          const st = await (await fetch("/api/status", { cache: "no-store" })).json();
+          busy = st.running;
+          swap.disabled = busy || (DEMO && st.pending <= 0); swap.textContent = busy ? "Running…" : label(st); reset.disabled = busy;
+          const l = st.last;
+          el.innerHTML = busy ? `<span class="dot run"></span><span>${DEMO ? "Adding the next scene and refitting" : "Fetching new scenes and refitting"}…</span>`
+            : l ? `<span class="dot ${l.ok ? "ok" : "bad"}"></span><span>${l.ok ? l.message : "Failed: " + l.message} · ${ago(l.finished_utc)}</span>`
+              : `<span class="dot"></span><span>${DEMO ? "Ready. " + st.pending + " scenes queued" : "Ready"}</span>`;
+          if (busy) setTimeout(refresh, 1000);
+          return st;
+        } catch (e) { el.innerHTML = '<span class="dot bad"></span><span>Server not reachable</span>'; swap.disabled = true; setTimeout(refresh, 3000) }
+      }
+      swap.onclick = async () => {
+        swap.disabled = true; await fetch("/api/rerun", { method: "POST" });
+        const t = setInterval(async () => { const st = await refresh(); if (st && !st.running) { clearInterval(t); location.reload() } }, 1000)
+      };
+      reset.onclick = async () => {
+        reset.disabled = true; swap.disabled = true; el.innerHTML = '<span class="dot run"></span><span>Resetting…</span>';
+        await fetch("/api/reset", { method: "POST" });
+        const t = setInterval(async () => { const st = await refresh(); if (st && !st.running) { clearInterval(t); location.reload() } }, 1000)
+      };
+      refresh();
+    }
+
+    async function pollStatus() {
+      const el = $("status");
+      try {
+        const r = await fetch(`https://api.github.com/repos/${DATA.repo}/actions/workflows/${DATA.workflow}/runs?per_page=1`, { headers: { Accept: "application/vnd.github+json" } });
+        if (!r.ok) throw 0;
+        const run = (await r.json()).workflow_runs?.[0];
+        if (!run) { el.innerHTML = `<span class="dot"></span><span>No refresh run yet</span>`; return }
+        if (run.status !== "completed") {
+          el.innerHTML = `<span class="dot run"></span><span>Refreshing · started ${ago(run.run_started_at || run.created_at)}</span>`;
+          setTimeout(pollStatus, 20000); return;
+        }
+        const ok = run.conclusion === "success", fresh = new Date(run.updated_at) > new Date(DATA.generated) && ok;
+        el.innerHTML = `<span class="dot ${ok ? "ok" : "bad"}"></span><span>Last check ${ago(run.updated_at)} · ${ok ? "succeeded" : run.conclusion}</span>` +
+          (fresh && (Date.now() - new Date(run.updated_at)) < 36e5 ? ` <a href="#" onclick="location.reload();return false">Reload</a>` : "");
+      } catch (e) { el.innerHTML = `<span class="dot"></span><span>Generated ${ago(DATA.generated)}</span>` }
+    }
+
+    function render() {
+      build();
+      const k = selDay, ti = k;
+      const pk = $("pick"); pk.min = D[0]; pk.max = D[N - 1]; pk.value = D[k];
+      $("cardsTitle").textContent = k === 0 ? `${DEMO ? "Replay day" : "Today"} · ${fmt(D[0], dShort)}` : fmt(D[k], { weekday: "long", day: "numeric", month: "short" });
+      $("cards").innerHTML = Z.map(z => {
+        const o = M[z], v = o.mean[k], c = cat(v), mn = Math.min(...o.mean), mx = Math.max(...o.mean);
+        return `<div class="card" style="--c:${COL[z] || "#888"}"><div class="z">${DATA.zones[z].name}</div>
+      <div class="v">${v.toFixed(1)}<span>°C</span></div>
+      <span class="chip" style="background:${c[2]}1A;color:${c[2]}">${c[1]}</span>
+      <div class="r">7-day range ${mn.toFixed(1)}–${mx.toFixed(1)} °C</div></div>`
+      }).join("");
+      $("tbl").innerHTML = `<tr><th>Zone</th>${D.map((d, i) => `<th class="${i === ti ? "today" : ""}">${fmt(d, dShort)}</th>`).join("")}</tr>` +
+        Z.map(z => `<tr><td><span class="sw" style="background:${COL[z]}"></span>${DATA.zones[z].name}</td>${D.map((d, i) =>
+          `<td class="${i === ti ? "today" : ""}">${M[z].mean[i].toFixed(1)}<small>${M[z].lo[i].toFixed(1)}–${M[z].hi[i].toFixed(1)}</small></td>`).join("")}</tr>`).join("");
+      draw();
+    }
+
+    function draw() {
+      const narrow = $("chart").clientWidth < 620, ti = selDay, zs = sel === "all" ? Z : [sel], W = narrow ? 560 : 960, H = narrow ? 360 : 320, L = 40, R = 28, T = 12, B = 30, n = D.length, fs = narrow ? 14 : 11;
+      $("chart").setAttribute("viewBox", `0 0 ${W} ${H}`);
+      document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.z === sel));
+      const avg = key => D.map((_, i) => Z.reduce((s, z) => s + M[z][key][i], 0) / Z.length);
+      const lo = sel === "all" ? avg("lo") : M[sel].lo, hi = sel === "all" ? avg("hi") : M[sel].hi;
+      const vmin = Math.floor(Math.min(...lo) - .5), vmax = Math.ceil(Math.max(...hi) + .5);
+      const X = i => L + (W - L - R) * i / (n - 1), Y = v => T + (H - T - B) * (1 - (v - vmin) / (vmax - vmin));
+      let s = ti >= 0 ? `<rect x="${Math.max(X(ti) - 16, L)}" y="${T}" width="32" height="${H - T - B}" fill="#FAF6F0"/>` : "";
+      for (let v = vmin; v <= vmax; v++)s += `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#EFECE7"/><text x="${L - 8}" y="${Y(v) + 4}" text-anchor="end" font-size="${fs}" fill="#6E737B">${v}</text>`;
+      CATS.slice(0, 4).forEach(c => { if (c[0] > vmin && c[0] < vmax) s += `<line x1="${L}" x2="${W - R}" y1="${Y(c[0])}" y2="${Y(c[0])}" stroke="${c[2]}" stroke-dasharray="3 4" opacity=".8"/><text x="${W - R}" y="${Y(c[0]) - 5}" text-anchor="end" font-size="${fs}" fill="${c[2]}">${c[1]} ≥ ${c[0]} °C</text>` });
+      const band = D.map((_, i) => `${X(i)},${Y(hi[i])}`).concat(D.map((_, i) => `${X(n - 1 - i)},${Y(lo[n - 1 - i])}`)).join(" ");
+      s += `<polygon points="${band}" fill="${sel === "all" ? "#7A1E2B" : COL[sel]}" opacity=".09"/>`;
+      zs.forEach(z => {
+        const m = M[z].mean;
+        s += `<polyline fill="none" stroke="${COL[z]}" stroke-width="2" stroke-linejoin="round" points="${m.map((v, i) => X(i) + "," + Y(v)).join(" ")}"/>`;
+        s += m.map((v, i) => `<circle cx="${X(i)}" cy="${Y(v)}" r="3" fill="#fff" stroke="${COL[z]}" stroke-width="1.8"/>`).join("")
+      });
+      D.forEach((d, i) => {
+        s += `<text x="${X(i)}" y="${H - 8}" text-anchor="middle" font-size="${fs + 1}" fill="${i === ti ? "#7A1E2B" : "#6E737B"}" font-weight="${i === ti ? 600 : 400}">${fmt(d, { weekday: "short", day: "numeric" })}</text>` +
+        `<rect class="hit" data-i="${i}" x="${X(i) - (W - L - R) / (n - 1) / 2}" y="${T}" width="${(W - L - R) / (n - 1)}" height="${H - T - B}" fill="transparent"/>`
+      });
+      $("chart").innerHTML = s;
+      $("legend").innerHTML = `<span><i style="background:${sel === "all" ? "#7A1E2B" : COL[sel]};opacity:.3;height:10px;vertical-align:-1px"></i>${sel === "all" ? "average 90% interval" : "90% interval"}</span>` +
+        zs.map(z => `<span><i style="background:${COL[z]}"></i>${DATA.zones[z].name}</span>`).join("");
+      const tip = $("tip");
+      document.querySelectorAll(".hit").forEach(r => {
+        r.onmousemove = e => {
+          const i = +r.dataset.i; tip.innerHTML = `<b>${fmt(D[i], dShort)}</b><br>` + zs.map(z => `${DATA.zones[z].name}: ${M[z].mean[i].toFixed(1)} °C <span style="opacity:.7">(${M[z].lo[i].toFixed(1)}–${M[z].hi[i].toFixed(1)})</span>`).join("<br>");
+          tip.style.opacity = 1; tip.style.left = Math.min(e.clientX + 14, innerWidth - 200) + "px"; tip.style.top = e.clientY + 14 + "px"
+        };
+        r.onmouseleave = () => tip.style.opacity = 0
+      });
+    }
+
+    if (!Z.length) { document.querySelector("main").innerHTML = "<p>No model data. Run generate_dashboard.py.</p>" }
+    else {
+      header();
+      const go = i => { selDay = Math.max(0, Math.min(N - 1, i)); render() };
+      $("pick").onchange = e => { const i = D.indexOf(e.target.value); i >= 0 ? go(i) : render() };
+      $("prev").onclick = () => go(selDay - 1); $("next").onclick = () => go(selDay + 1); $("tod").onclick = () => go(0);
+      $("tabs").innerHTML = [["all", "All zones"], ...Z.map(z => [z, DATA.zones[z].name])].map(([i, n]) => `<button data-z="${i}">${n}</button>`).join("");
+      $("tabs").onclick = e => { if (e.target.dataset.z) { sel = e.target.dataset.z; draw() } };
+      $("pi").textContent = `Mean, with ${DATA.pi}% interval below`;
+      const a = DATA.accuracy;
+      $("foot").innerHTML = `<p><b>Method.</b> ${DATA.model}, fitted to Landsat 8/9 LST and ERA5-Land, downscaled per zone (TVX) and converted to UTCI. Values are the 10:30 AM overpass condition, not the daily maximum. Between scenes the anomaly decays toward climatology, so confidence falls with time since the last scene.</p>` +
+        `<p>${a && a.window ? `Replay accuracy from ${a.n} one-step-ahead predictions, ${fmt(a.window.start, dLong)} to ${fmt(a.window.end, dLong)}. ` : ""}Model state generated ${new Date(DATA.generated).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}.</p>` +
+        `<p>Heat Adaptation for IITM Campus, Group 3 academic project. Satellite-based estimates, not validated against ground sensors; not an official IIT Madras service.</p>`;
+      addEventListener("resize", () => { clearTimeout(window._r); window._r = setTimeout(draw, 150) });
+      render();
+    }
+  </script>
+</body>
+
+</html>

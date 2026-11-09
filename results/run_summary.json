@@ -1,0 +1,174 @@
+{
+ "run_utc": "2026-11-05T13:00:01+00:00",
+ "versions": {
+  "python": "3.13.16",
+  "pandas": "2.2.3",
+  "numpy": "2.4.6",
+  "statsmodels": "0.15.0",
+  "pythermalcomfort": "4.8.1",
+  "torch": "2.11.0+cu130"
+ },
+ "date_source": "column 'Observation_Date'",
+ "dates_are_placeholder": false,
+ "config": {
+  "UTCI_INPUTS": {
+   "tdb": "AirTemp_2m",
+   "tr": "Local_MRT",
+   "v": "Local_WindSpeed_10m",
+   "rh": "Local_RelHumidity"
+  },
+  "DOWNSCALE": {
+   "alpha_air": 0.15,
+   "k_mrt": 0.5,
+   "beta_rh": 5.0,
+   "beta_vp": 0.05,
+   "gamma_wind": 0.6
+  },
+  "GEE_FLAGS": {
+   "fix_ndvi_scaling": true,
+   "extra_cloud_mask": true,
+   "fill_masked": false,
+   "mrt_mode": "air"
+  },
+  "mrt_equals_air_temp": true,
+  "LST_MIN_C": 15.0,
+  "LST_MAX_C": 70.0,
+  "LST_BELOW_AIR_C": 5.0,
+  "MIN_VALID_FRAC": 0.5,
+  "GRID_STEP_DAYS": 8,
+  "N_HARMONICS": 2,
+  "TEST_FRAC": 0.25,
+  "KALMAN_REFIT_EVERY": 1,
+  "PI_LEVEL": 0.9,
+  "FORECAST_MODEL": "kalman",
+  "LSTM": {
+   "window": 8,
+   "hidden": 16,
+   "seeds": 3,
+   "epochs": 80,
+   "warm_epochs": 25,
+   "refit_every": 4
+  }
+ },
+ "data": {
+  "rows": 112095,
+  "scenes": 289,
+  "scenes_from_gee": 0,
+  "first_date": "2013-03-21",
+  "last_date": "2026-10-20"
+ },
+ "gee_fetch_this_run": [],
+ "scenes_downscaled": 289,
+ "cleaning": {
+  "n_scenes": 289,
+  "n_gapfilled_or_single_point_scenes": 3,
+  "points_valid_frac_of_rows": 0.929889825594362,
+  "median_points_per_scene": 481.0,
+  "zone_scenes_usable": {
+   "AC": 212,
+   "HZ": 218,
+   "LW": 213,
+   "NV": 204,
+   "SQ": 215
+  }
+ },
+ "utci_out_of_range_points": 0,
+ "grid": {
+  "step_days": 8,
+  "n_grid": 621,
+  "scene_gap_days_counts": {
+   "8": 113,
+   "16": 113,
+   "32": 24,
+   "24": 16,
+   "48": 12,
+   "64": 5,
+   "40": 2,
+   "18": 1
+  },
+  "median_gap_days_by_year": {
+   "2013": 16.0,
+   "2014": 16.0,
+   "2015": 16.0,
+   "2016": 16.0,
+   "2017": 16.0,
+   "2018": 16.0,
+   "2019": 16.0,
+   "2020": 16.0,
+   "2021": 16.0,
+   "2022": 8.0,
+   "2023": 8.0,
+   "2024": 8.0,
+   "2025": 8.0,
+   "2026": 8.0
+  },
+  "max_abs_snap_days": 2,
+  "scenes_merged_into_same_slot": 0,
+  "observed_slots_per_zone": {
+   "AC": 212,
+   "HZ": 218,
+   "LW": 213,
+   "NV": 204,
+   "SQ": 215
+  },
+  "zone_mean_utci": {
+   "AC": 29.788,
+   "HZ": 29.764,
+   "LW": 29.877,
+   "NV": 29.913,
+   "SQ": 29.929
+  },
+  "zone_mean_range_C": 0.165
+ },
+ "decomposition": {
+  "trend_C_per_year": {
+   "AC": 0.029,
+   "HZ": 0.022,
+   "LW": 0.025,
+   "NV": 0.025,
+   "SQ": 0.019
+  },
+  "anomaly_std": {
+   "AC": 1.164,
+   "HZ": 1.152,
+   "LW": 1.114,
+   "NV": 1.104,
+   "SQ": 1.116
+  },
+  "raw_std": {
+   "AC": 2.829,
+   "HZ": 2.828,
+   "LW": 2.789,
+   "NV": 2.828,
+   "SQ": 2.816
+  },
+  "anomaly_lag1_autocorr": {
+   "AC": 0.239,
+   "HZ": 0.273,
+   "LW": 0.334,
+   "NV": 0.337,
+   "SQ": 0.35
+  },
+  "anomaly_cross_zone_corr_mean": 0.9942253494307123
+ },
+ "test_window": {
+  "start": "2023-05-28",
+  "end": "2026-10-19",
+  "n_predictions": 375
+ },
+ "kalman_interval": {
+  "level": 0.9,
+  "empirical_coverage": 0.885,
+  "mean_width": 3.569
+ },
+ "head_to_head": {
+  "lstm_better_share": 0.261,
+  "mean_abs_err_kalman": 0.996,
+  "mean_abs_err_lstm": 1.357,
+  "mean_paired_diff_kalman_minus_lstm": -0.361,
+  "paired_diff_std_err": 0.035
+ },
+ "best_model_by_rmse": "kalman",
+ "next_forecast_date": "2026-10-27",
+ "runtime_s": 117.4
+}
