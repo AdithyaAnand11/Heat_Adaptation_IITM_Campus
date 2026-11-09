@@ -1,1 +1,1 @@
-#Resources for the IIT Madras Heat Adaptation project, including satellite data, derived thermal comfort indices, and website requirements for weekly weather forecasting
+Resources for the IIT Madras Heat Adaptation project, including satellite data, derived thermal comfort indices, and website requirements for weekly weather forecasting
